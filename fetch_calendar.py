@@ -72,9 +72,8 @@ def format_event_html(event):
         time_str = dt_brussels.strftime('%H:%M')
     
     return f"""    <li>
-      {date_str}<br>
-      {time_str}<br>
-      {event['summary']}
+      <strong>{event['summary']}</strong><br>
+      {date_str} - {time_str}
     </li>"""
 
 def generate_html(events):
