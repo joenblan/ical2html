@@ -51,19 +51,30 @@ def format_event_html(event):
     """Format a single event as HTML list items."""
     dt = event['datetime']
     
-    # Format date (e.g., "Monday, January 27, 2026")
-    date_str = dt.strftime('%A, %B %d, %Y')
+    # Convert to Brussels timezone
+    brussels_tz = pytz.timezone('Europe/Brussels')
+    dt_brussels = dt.astimezone(brussels_tz)
     
-    # Format time (e.g., "2:30 PM") - only if it's not midnight (all-day events)
+    # Dutch day and month names
+    days_nl = ['maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag']
+    months_nl = ['', 'januari', 'februari', 'maart', 'april', 'mei', 'juni', 
+                 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+    
+    # Format date in Dutch (e.g., "maandag 27 januari 2026")
+    day_name = days_nl[dt_brussels.weekday()]
+    date_str = f"{day_name} {dt_brussels.day} {months_nl[dt_brussels.month]} {dt_brussels.year}"
+    
+    # Check if this is an all-day event (original time was midnight UTC)
     if dt.hour == 0 and dt.minute == 0:
-        time_str = "All day"
+        time_str = "hele dag"
     else:
-        time_str = dt.strftime('%I:%M %p').lstrip('0')
+        # Format time in 24-hour format (e.g., "14:30")
+        time_str = dt_brussels.strftime('%H:%M')
     
     return f"""    <li>
-      <strong></strong> {date_str}<br>
-      <strong></strong> {time_str}<br>
-      <strong></strong> {event['summary']}
+      {date_str}<br>
+      {time_str}<br>
+      {event['summary']}
     </li>"""
 
 def generate_html(events):
@@ -80,8 +91,8 @@ def generate_html(events):
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Kalender</h1>
-  <h2>BS Het Park</h2>
+  <h1>Upcoming Events</h1>
+  <h2>Next 5 Events</h2>
   <ul>
 {events_html}
   </ul>
