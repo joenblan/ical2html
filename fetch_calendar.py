@@ -108,7 +108,7 @@ def main():
     cal = fetch_and_parse_calendar(ICS_URL)
     
     print("Extracting upcoming events...")
-    events = get_upcoming_events(cal, count=5)
+    events = get_upcoming_events(cal, count=7)
     
     if not events:
         print("No upcoming events found.")
