@@ -61,9 +61,9 @@ def format_event_html(event):
         time_str = dt.strftime('%I:%M %p').lstrip('0')
     
     return f"""    <li>
-      <strong>Date:</strong> {date_str}<br>
-      <strong>Time:</strong> {time_str}<br>
-      <strong>Event:</strong> {event['summary']}
+      <strong></strong> {date_str}<br>
+      <strong></strong> {time_str}<br>
+      <strong></strong> {event['summary']}
     </li>"""
 
 def generate_html(events):
@@ -80,8 +80,8 @@ def generate_html(events):
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Upcoming Events</h1>
-  <h2>Next 5 Events</h2>
+  <h1>Kalender</h1>
+  <h2>BS Het Park</h2>
   <ul>
 {events_html}
   </ul>
