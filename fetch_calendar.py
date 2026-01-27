@@ -16,7 +16,7 @@ def fetch_and_parse_calendar(ics_url):
     cal = Calendar.from_ical(response.content)
     return cal
 
-def get_upcoming_events(cal, count=5):
+def get_upcoming_events(cal, count=7):
     """Extract upcoming events from calendar."""
     now = datetime.now(timezone.utc)
     events = []
