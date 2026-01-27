@@ -95,9 +95,6 @@ def generate_html(events):
   <ul>
 {events_html}
   </ul>
-  <p style="margin-top: 2vh; font-size: 0.9em; color: #888;">
-    Last updated: {datetime.now(timezone.utc).strftime('%B %d, %Y at %I:%M %p UTC')}
-  </p>
 </body>
 </html>"""
     
