@@ -90,8 +90,8 @@ def generate_html(events):
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Upcoming Events</h1>
-  <h2>Next 5 Events</h2>
+  <h1>Kalender</h1>
+  <h2></h2>
   <ul>
 {events_html}
   </ul>
