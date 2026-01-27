@@ -35,7 +35,7 @@ ul {
 }
 
 li {
-  font-size: 3em; /* Keep original scaling */
+  font-size: 1.3em; /* Keep original scaling */
   margin-bottom: 2vh; /* Add more space between events */
   color: #6D6875; /* Soft muted purple for a modern aesthetic */
 }
