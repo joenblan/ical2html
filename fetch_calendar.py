@@ -95,6 +95,8 @@ def generate_html(events):
   <ul>
 {events_html}
   </ul>
+  <h2 style="text-align: center;">Bekijk de volledige kalender op onze website</h2>
+  <h2 style="text-align: center;">www.basisschoolhetpark.be</h2>
 </body>
 </html>"""
     
