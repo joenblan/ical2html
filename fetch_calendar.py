@@ -112,7 +112,7 @@ def bouw_html(afspraken: list[dict], vandaag: dt.date) -> str:
   <header>
     <div>
       <div class="merk">{SCHOOL_NAAM}</div>
-      <div class="titel">Wat staat er op de kalender</div>
+      <div class="titel">Kalender</div>
     </div>
     <div class="vandaag" id="vandaag"></div>
   </header>
