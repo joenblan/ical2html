@@ -1,45 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upcoming Calendar Events</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920, initial-scale=1">
+<title>Kalender Basisschool Het Park</title>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="stylesheet"
+      href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Kalender</h1>
-  <h2></h2>
-  <ul>
-    <li>
-      <strong>Busy</strong><br>
-      dinsdag 15 september 2026 - 13:00
-    </li>
-    <li>
-      <strong>L2 - bibliotheek </strong><br>
-      woensdag 16 september 2026 - 10:30
-    </li>
-    <li>
-      <strong>Scholenloop</strong><br>
-      donderdag 17 september 2026 - 08:30
-    </li>
-    <li>
-      <strong>De vlinderklas: Oversteken op straat</strong><br>
-      donderdag 17 september 2026 - 22:30
-    </li>
-    <li>
-      <strong>STRAPDAG</strong><br>
-      vrijdag 18 september 2026 - hele dag
-    </li>
-    <li>
-      <strong>L2 & L4 - CLB (op school)</strong><br>
-      vrijdag 18 september 2026 - 08:30
-    </li>
-    <li>
-      <strong>Ouderfuif</strong><br>
-      zaterdag 19 september 2026 - 21:00
-    </li>
-  </ul>
-  <h2 style="text-align: center;">Bekijk de volledige kalender op onze website</h2>
-  <h2 style="text-align: center;">www.basisschoolhetpark.be</h2>
+
+<div id="scherm">
+  <header>
+    <div>
+      <div class="merk">Basisschool Het Park</div>
+      <div class="titel">Wat staat er op de kalender</div>
+    </div>
+    <div class="vandaag" id="vandaag"></div>
+  </header>
+
+  <main id="inhoud">
+    <noscript><p class="leeg">Zet JavaScript aan om de kalender te tonen.</p></noscript>
+  </main>
+
+  <footer>
+    <span>Volledige kalender op www.basisschoolhetpark.be</span>
+    <span class="dim">Bijgewerkt op 15 september 2026</span>
+  </footer>
+</div>
+
+<script>
+const DATA = {"bijgewerkt_op": "2026-09-15", "afspraken": [{"titel": "Zwemmen L2 & L3", "heledag": false, "start": "2026-09-15T08:30:00+02:00", "eind": "2026-09-15T11:30:00+02:00", "tijd": "08:30", "locatie": ""}, {"titel": "L1b: wandeling rond school", "heledag": false, "start": "2026-09-15T10:30:00+02:00", "eind": "2026-09-15T11:00:00+02:00", "tijd": "10:30", "locatie": ""}, {"titel": "Verkeerswandeling Libellen", "heledag": false, "start": "2026-09-15T10:30:00+02:00", "eind": "2026-09-15T11:30:00+02:00", "tijd": "10:30", "locatie": ""}, {"titel": "Bezoek gemeentehuis 4de lj A en B", "heledag": false, "start": "2026-09-15T14:00:00+02:00", "eind": "2026-09-15T15:30:00+02:00", "tijd": "14:00", "locatie": ""}, {"titel": "L2 - bibliotheek", "heledag": false, "start": "2026-09-16T10:30:00+02:00", "eind": "2026-09-16T11:30:00+02:00", "tijd": "10:30", "locatie": ""}, {"titel": "Scholenloop", "heledag": false, "start": "2026-09-17T08:30:00+02:00", "eind": "2026-09-17T15:30:00+02:00", "tijd": "08:30", "locatie": ""}, {"titel": "De vlinderklas: Oversteken op straat", "heledag": false, "start": "2026-09-17T22:30:00+02:00", "eind": "2026-09-17T23:00:00+02:00", "tijd": "22:30", "locatie": ""}, {"titel": "STRAPDAG", "heledag": true, "start": "2026-09-18", "eind": "2026-09-18", "tijd": null, "locatie": ""}, {"titel": "L2 & L4 - CLB (op school)", "heledag": false, "start": "2026-09-18T08:30:00+02:00", "eind": "2026-09-18T12:00:00+02:00", "tijd": "08:30", "locatie": ""}, {"titel": "Ouderfuif", "heledag": false, "start": "2026-09-19T21:00:00+02:00", "eind": "2026-09-19T22:00:00+02:00", "tijd": "21:00", "locatie": ""}, {"titel": "Zwemmen L2 & L5-L6", "heledag": false, "start": "2026-09-22T08:30:00+02:00", "eind": "2026-09-22T11:30:00+02:00", "tijd": "08:30", "locatie": ""}, {"titel": "Pedagogische studiedag", "heledag": true, "start": "2026-09-23", "eind": "2026-09-23", "tijd": null, "locatie": ""}, {"titel": "Pré rapport L1", "heledag": true, "start": "2026-09-25", "eind": "2026-09-25", "tijd": null, "locatie": ""}, {"titel": "L1 bib", "heledag": false, "start": "2026-09-25T11:00:00+02:00", "eind": "2026-09-25T12:00:00+02:00", "tijd": "11:00", "locatie": ""}, {"titel": "Bosklas L6", "heledag": true, "start": "2026-09-28", "eind": "2026-10-02", "tijd": null, "locatie": ""}, {"titel": "Zwemmen L2 & L3", "heledag": false, "start": "2026-09-29T08:30:00+02:00", "eind": "2026-09-29T11:30:00+02:00", "tijd": "08:30", "locatie": ""}, {"titel": "Bib de vlinders", "heledag": false, "start": "2026-09-30T09:00:00+02:00", "eind": "2026-09-30T10:00:00+02:00", "tijd": "09:00", "locatie": ""}, {"titel": "Bib De Uilen", "heledag": false, "start": "2026-10-01T10:45:00+02:00", "eind": "2026-10-01T11:45:00+02:00", "tijd": "10:45", "locatie": ""}, {"titel": "L5 - Cultuurhuis", "heledag": false, "start": "2026-10-05T10:00:00+02:00", "eind": "2026-10-05T12:00:00+02:00", "tijd": "10:00", "locatie": ""}, {"titel": "Zwemmen L2 & L3", "heledag": false, "start": "2026-10-06T08:30:00+02:00", "eind": "2026-10-06T11:30:00+02:00", "tijd": "08:30", "locatie": ""}, {"titel": "Bib de libellen", "heledag": false, "start": "2026-10-07T10:45:00+02:00", "eind": "2026-10-07T11:45:00+02:00", "tijd": "10:45", "locatie": ""}, {"titel": "Zwemmen L2 & L3", "heledag": false, "start": "2026-10-13T08:30:00+02:00", "eind": "2026-10-13T11:30:00+02:00", "tijd": "08:30", "locatie": ""}, {"titel": "Bieb L6", "heledag": false, "start": "2026-10-13T13:00:00+02:00", "eind": "2026-10-13T14:00:00+02:00", "tijd": "13:00", "locatie": ""}, {"titel": "BIb L3", "heledag": false, "start": "2026-10-16T09:00:00+02:00", "eind": "2026-10-16T10:00:00+02:00", "tijd": "09:00", "locatie": ""}, {"titel": "Eetfestijn", "heledag": true, "start": "2026-10-18", "eind": "2026-10-18", "tijd": null, "locatie": ""}, {"titel": "Zwemmen L2 & L5-L6", "heledag": false, "start": "2026-10-20T08:30:00+02:00", "eind": "2026-10-20T11:30:00+02:00", "tijd": "08:30", "locatie": ""}, {"titel": "Gentbos: de muizen, de bijen en de poezen", "heledag": false, "start": "2026-10-21T08:30:00+02:00", "eind": "2026-10-21T12:00:00+02:00", "tijd": "08:30", "locatie": ""}, {"titel": "lln raad", "heledag": false, "start": "2026-10-23T13:00:00+02:00", "eind": "2026-10-23T13:30:00+02:00", "tijd": "13:00", "locatie": ""}, {"titel": "Zwemmen L2 & L3", "heledag": false, "start": "2026-10-27T08:30:00+01:00", "eind": "2026-10-27T11:30:00+01:00", "tijd": "08:30", "locatie": ""}, {"titel": "Wenmoment peuters", "heledag": false, "start": "2026-10-27T10:25:00+01:00", "eind": "2026-10-27T11:15:00+01:00", "tijd": "10:25", "locatie": ""}, {"titel": "Grootouderfeest kleuters", "heledag": false, "start": "2026-10-28T09:00:00+01:00", "eind": "2026-10-28T12:05:00+01:00", "tijd": "09:00", "locatie": ""}, {"titel": "Rapport L2-L6", "heledag": true, "start": "2026-10-30", "eind": "2026-10-30", "tijd": null, "locatie": ""}, {"titel": "Herfstvakantie", "heledag": true, "start": "2026-11-02", "eind": "2026-11-06", "tijd": null, "locatie": ""}, {"titel": "Bieb L6", "heledag": false, "start": "2026-11-09T13:00:00+01:00", "eind": "2026-11-09T14:00:00+01:00", "tijd": "13:00", "locatie": ""}, {"titel": "Bezoek IJzertoren L6", "heledag": false, "start": "2026-11-10T08:00:00+01:00", "eind": "2026-11-10T15:30:00+01:00", "tijd": "08:00", "locatie": ""}, {"titel": "Zwemmen L2 & L3", "heledag": false, "start": "2026-11-10T08:30:00+01:00", "eind": "2026-11-10T11:30:00+01:00", "tijd": "08:30", "locatie": ""}, {"titel": "Bib De Uilen", "heledag": false, "start": "2026-11-12T10:45:00+01:00", "eind": "2026-11-12T11:45:00+01:00", "tijd": "10:45", "locatie": ""}, {"titel": "Bib L3", "heledag": false, "start": "2026-11-13T09:00:00+01:00", "eind": "2026-11-13T10:00:00+01:00", "tijd": "09:00", "locatie": ""}, {"titel": "Oudercontact 1 De muizen-L5", "heledag": true, "start": "2026-11-16", "eind": "2026-11-20", "tijd": null, "locatie": ""}, {"titel": "De konijnen, de vlinders, de libellen & de uilen - Cultuurhuis", "heledag": false, "start": "2026-11-16T10:00:00+01:00", "eind": "2026-11-16T12:00:00+01:00", "tijd": "10:00", "locatie": ""}, {"titel": "L4A & L4B - CLB (op school)", "heledag": false, "start": "2026-11-16T10:30:00+01:00", "eind": "2026-11-16T11:30:00+01:00", "tijd": "10:30", "locatie": ""}, {"titel": "Zwemmen L2 & L3", "heledag": false, "start": "2026-11-17T08:30:00+01:00", "eind": "2026-11-17T11:30:00+01:00", "tijd": "08:30", "locatie": ""}, {"titel": "Bib de libellen", "heledag": false, "start": "2026-11-18T10:45:00+01:00", "eind": "2026-11-18T11:45:00+01:00", "tijd": "10:45", "locatie": ""}, {"titel": "Zwemmen L2 & L3", "heledag": false, "start": "2026-11-24T08:30:00+01:00", "eind": "2026-11-24T11:30:00+01:00", "tijd": "08:30", "locatie": ""}, {"titel": "L1a &L1B - Cultuurhuis", "heledag": false, "start": "2026-11-24T10:00:00+01:00", "eind": "2026-11-24T12:00:00+01:00", "tijd": "10:00", "locatie": ""}, {"titel": "Zwemmen L2 & L5-L6", "heledag": false, "start": "2026-12-01T08:30:00+01:00", "eind": "2026-12-01T11:30:00+01:00", "tijd": "08:30", "locatie": ""}, {"titel": "Pedagogische studiedag", "heledag": true, "start": "2026-12-02", "eind": "2026-12-02", "tijd": null, "locatie": ""}, {"titel": "Bib De Uilen", "heledag": false, "start": "2026-12-03T10:45:00+01:00", "eind": "2026-12-03T11:45:00+01:00", "tijd": "10:45", "locatie": ""}, {"titel": "Sint", "heledag": true, "start": "2026-12-04", "eind": "2026-12-04", "tijd": null, "locatie": ""}, {"titel": "Zwemmen L2 & L3", "heledag": false, "start": "2026-12-08T08:30:00+01:00", "eind": "2026-12-08T11:30:00+01:00", "tijd": "08:30", "locatie": ""}, {"titel": "Bib de libellen", "heledag": false, "start": "2026-12-09T10:45:00+01:00", "eind": "2026-12-09T11:45:00+01:00", "tijd": "10:45", "locatie": ""}, {"titel": "lln raad", "heledag": false, "start": "2026-12-11T13:00:00+01:00", "eind": "2026-12-11T13:30:00+01:00", "tijd": "13:00", "locatie": ""}, {"titel": "Oudercontact L6", "heledag": true, "start": "2026-12-15", "eind": "2026-12-18", "tijd": null, "locatie": ""}, {"titel": "Zwemmen L2 & L3", "heledag": false, "start": "2026-12-15T08:30:00+01:00", "eind": "2026-12-15T11:30:00+01:00", "tijd": "08:30", "locatie": ""}, {"titel": "Wenmoment peuters", "heledag": false, "start": "2026-12-15T22:25:00+01:00", "eind": "2026-12-15T23:10:00+01:00", "tijd": "22:25", "locatie": ""}, {"titel": "Rapport lager", "heledag": true, "start": "2026-12-18", "eind": "2026-12-18", "tijd": null, "locatie": ""}, {"titel": "Bib L3", "heledag": false, "start": "2026-12-18T14:15:00+01:00", "eind": "2026-12-18T15:15:00+01:00", "tijd": "14:15", "locatie": ""}, {"titel": "Kerstvakantie", "heledag": true, "start": "2026-12-21", "eind": "2027-01-01", "tijd": null, "locatie": ""}, {"titel": "L6 - CLB (in CLB)", "heledag": false, "start": "2027-01-05T07:30:00+01:00", "eind": "2027-01-05T08:30:00+01:00", "tijd": "07:30", "locatie": ""}, {"titel": "Zwemmen L1 & L4", "heledag": false, "start": "2027-01-05T08:30:00+01:00", "eind": "2027-01-05T11:30:00+01:00", "tijd": "08:30", "locatie": ""}, {"titel": "Bieb L6", "heledag": false, "start": "2027-01-05T13:00:00+01:00", "eind": "2027-01-05T14:00:00+01:00", "tijd": "13:00", "locatie": ""}, {"titel": "L3A, L3B & L4 - Cultuurhuis", "heledag": false, "start": "2027-01-06T09:30:00+01:00", "eind": "2027-01-06T11:30:00+01:00", "tijd": "09:30", "locatie": ""}, {"titel": "Bib De Uilen", "heledag": false, "start": "2027-01-07T10:45:00+01:00", "eind": "2027-01-07T11:45:00+01:00", "tijd": "10:45", "locatie": ""}, {"titel": "Infoavond peuters", "heledag": false, "start": "2027-01-07T18:00:00+01:00", "eind": "2027-01-07T19:00:00+01:00", "tijd": "18:00", "locatie": ""}, {"titel": "L4, L5 & L6: Lago Rozebroeken", "heledag": false, "start": "2027-01-11T13:30:00+01:00", "eind": "2027-01-11T15:30:00+01:00", "tijd": "13:30", "locatie": ""}, {"titel": "Zwemmen L1 & L5-L6", "heledag": false, "start": "2027-01-12T08:30:00+01:00", "eind": "2027-01-12T11:30:00+01:00", "tijd": "08:30", "locatie": ""}, {"titel": "L2A & L2B - Cultuurhuis", "heledag": false, "start": "2027-01-12T10:00:00+01:00", "eind": "2027-01-12T12:00:00+01:00", "tijd": "10:00", "locatie": ""}]};
+
+// Hoeveel afspraken er op het scherm passen.
+const MAX_AFSPRAKEN = 7;
+// Elke 30 minuten de pagina opnieuw ophalen, zodat een nieuwe build binnenkomt.
+const HERLAAD_MS = 30 * 60 * 1000;
+
+const WEEKDAGEN = ["zondag", "maandag", "dinsdag", "woensdag", "donderdag",
+                   "vrijdag", "zaterdag"];
+const MAANDEN = ["januari", "februari", "maart", "april", "mei", "juni", "juli",
+                 "augustus", "september", "oktober", "november", "december"];
+
+function dagVan(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, c =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+function dagLabel(dag, vandaag) {
+  const verschil = Math.round((dag - vandaag) / 86400000);
+  const datum = WEEKDAGEN[dag.getDay()] + " " + dag.getDate() + " " +
+                MAANDEN[dag.getMonth()];
+  if (verschil === 0) return { klem: "Vandaag", datum: datum };
+  if (verschil === 1) return { klem: "Morgen", datum: datum };
+  return { klem: null, datum: datum };
+}
+
+function teken() {
+  const nu = new Date();
+  const vandaag = dagVan(nu);
+  document.getElementById("vandaag").textContent =
+    WEEKDAGEN[nu.getDay()] + " " + nu.getDate() + " " + MAANDEN[nu.getMonth()];
+
+  // Een afspraak blijft staan tot ze voorbij is, niet tot ze begonnen is.
+  const komend = DATA.afspraken.filter(a => {
+    const eind = new Date(a.eind);
+    return a.heledag ? dagVan(eind) >= vandaag : eind >= nu;
+  }).slice(0, MAX_AFSPRAKEN);
+
+  const inhoud = document.getElementById("inhoud");
+  if (komend.length === 0) {
+    inhoud.innerHTML = '<p class="leeg">Geen afspraken gepland.</p>';
+    return;
+  }
+
+  // Per dag groeperen zodat dezelfde datum niet vier keer onder elkaar staat.
+  const dagen = [];
+  komend.forEach(a => {
+    const sleutel = a.start.slice(0, 10);
+    let groep = dagen.find(d => d.sleutel === sleutel);
+    if (!groep) {
+      groep = { sleutel: sleutel, dag: dagVan(new Date(a.start)), items: [] };
+      dagen.push(groep);
+    }
+    groep.items.push(a);
+  });
+
+  let html = '';
+  dagen.forEach(groep => {
+    const label = dagLabel(groep.dag, vandaag);
+    html += '<section class="dag' + (label.klem ? ' nabij' : '') + '">' +
+      '<h2>' + (label.klem ? '<span class="klem">' + label.klem + '</span>' : '') +
+        '<span class="dagdatum">' + esc(label.datum) + '</span></h2><ul>';
+    groep.items.forEach(a => {
+      html += '<li>' +
+        '<span class="tijd">' + (a.heledag ? 'hele dag' : esc(a.tijd)) + '</span>' +
+        '<span class="titel">' + esc(a.titel) +
+          (a.locatie ? '<span class="plek"> \u00b7 ' + esc(a.locatie) + '</span>' : '') +
+        '</span></li>';
+    });
+    html += '</ul></section>';
+  });
+  inhoud.innerHTML = html;
+}
+
+// Een scherm dat maandenlang hetzelfde toont brandt in. Elke vijf minuten
+// een paar pixels opschuiven is genoeg om dat te voorkomen.
+const SCHUIF = [[0,0],[2,1],[3,0],[2,-1],[0,-2],[-2,-1],[-3,0],[-2,1]];
+let schuifIndex = 0;
+function pixelShift() {
+  const [x, y] = SCHUIF[schuifIndex % SCHUIF.length];
+  document.getElementById("scherm").style.transform =
+    "translate(" + x + "px," + y + "px)";
+  schuifIndex++;
+}
+
+teken();
+pixelShift();
+setInterval(teken, 60 * 1000);
+setInterval(pixelShift, 5 * 60 * 1000);
+setTimeout(() => location.reload(), HERLAAD_MS);
+</script>
+
 </body>
 </html>
